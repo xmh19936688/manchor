@@ -1,5 +1,7 @@
 # manchor
 
+For windows see: https://github.com/xmh19936688/Pindow
+
 manchor 是一个macOS上运行的 anchor 工具，用于在屏幕右下角显示一个可自定义的悬浮时间窗口。  
 支持透明模式、普通窗口模式、菜单栏控制、双击切换、右键菜单、窗口位置记忆等功能。
 
