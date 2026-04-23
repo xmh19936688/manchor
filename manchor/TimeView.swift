@@ -74,6 +74,6 @@ class TimeView: NSView {
 
     // MARK: - External Color Update
     func updateColor(_ color: NSColor) {
-        timeLabel.foregroundColor = color.withAlphaComponent(0.25).cgColor
+        timeLabel.foregroundColor = color.cgColor
     }
 }
