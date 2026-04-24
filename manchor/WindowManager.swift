@@ -17,7 +17,6 @@ class WindowManager: NSObject, NSWindowDelegate {
         createWindow()
         restoreWindowFrame()
         startColorTimer()
-        registerScreenChangeNotifications()
     }
 
     // MARK: - Create Transparent Window
@@ -66,17 +65,6 @@ class WindowManager: NSObject, NSWindowDelegate {
         }
     }
 
-    // MARK: - Screen Change Listener
-    private func registerScreenChangeNotifications() {
-        NotificationCenter.default.addObserver(
-            forName: NSApplication.didChangeScreenParametersNotification,
-            object: nil,
-            queue: .main
-        ) { _ in
-            self.positionWindow()
-        }
-    }
-
     // MARK: - Toggle Mode
     func toggleWindowMode() {
         isTransparentMode.toggle()
@@ -120,8 +108,9 @@ class WindowManager: NSObject, NSWindowDelegate {
     }
 
     private func restoreWindowFrame() {
-        guard let dict = UserDefaults.standard.dictionary(forKey: "SavedWindowFrame") as? [String: CGFloat] else {
-            return
+        guard let dict = UserDefaults.standard.dictionary(forKey: "SavedWindowFrame") as? [String: CGFloat] else { 
+            self.positionWindow()
+            return 
         }
 
         let x = dict["x"] ?? 0
